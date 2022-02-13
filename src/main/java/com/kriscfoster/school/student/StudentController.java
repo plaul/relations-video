@@ -20,7 +20,8 @@ public class StudentController {
 
     @GetMapping("/{id}")
     Student getStudent(@PathVariable Long id) {
-        return studentRepository.getOne(id);
+
+        return studentRepository.findById(id).get();
     }
     //@GetMapping("/v2")
     List<StudentDTO> getStudentsDTO() {
@@ -39,6 +40,6 @@ public class StudentController {
 
     @DeleteMapping("/{id}")
     void deleteStudent(@PathVariable Long id) {
-        studentRepository.deleteById(id);
+
     }
 }

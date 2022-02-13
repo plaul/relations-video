@@ -31,15 +31,12 @@ public class StudentDTO {
     }
 
     public static List<StudentDTO> getListFromStudentList(Iterable<Student> students){
-        List<StudentDTO> studentDTOS = new ArrayList<>();
-        for(Student s: students){
-            studentDTOS.add(new StudentDTO((s)));
-        }
-        return studentDTOS;
-        //Tomas will introduce Lambdas in Java. With lambdas you can do what we did above like this
-        //return StreamSupport.stream(students.spliterator(),false).map(student -> new StudentDTO(student)).collect(Collectors.toList());
-        // Or even simpler
-        //return StreamSupport.stream(students.spliterator(),false).map(StudentDTO::new).collect(Collectors.toList());
+//        List<StudentDTO> studentDTOS = new ArrayList<>();
+//        for(Student s: students){
+//            studentDTOS.add(new StudentDTO((s)));
+//        }
+//        return studentDTOS;
+        return StreamSupport.stream(students.spliterator(),false).map(StudentDTO::new).collect(Collectors.toList());
     }
 
     public static List<StudentDTO> getListFromStudentListWithCourseTitles(Iterable<Student> students){
